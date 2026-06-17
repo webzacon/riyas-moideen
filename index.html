@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyas Moideen S | Business Analyst & Data Analytics Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        /* Premium Minimalist Light Theme Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #F8F9FA; /* Premium Studio White */
+            color: #1A1A1A; /* Crisp Onyx Black */
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Background Texture Layer */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.018;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Micro-Interaction Animated Underline */
+        .interactive-nav-link {
+            position: relative;
+        }
+        .interactive-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: #1A1A1A;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .interactive-nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Masking effect utility for text reveals */
+        .text-mask {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden selection:bg-neutral-200 selection:text-black">
+
+    <div class="noise-overlay"></div>
+
+    <div id="magnetic-cursor" class="fixed top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 hidden md:block"></div>
+
+    <nav class="fixed top-0 w-full flex justify-between items-center px-6 md:px-16 py-6 z-40 bg-[#F8F9FA]/80 backdrop-blur-md border-b border-neutral-200/50">
+        <div class="text-base font-bold tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity">
+            Riyas Moideen S [cite: 2]
+        </div>
+        <div class="flex space-x-6 md:space-x-10 text-xs tracking-widest uppercase text-neutral-500 font-medium">
+            <a href="#about" class="interactive-nav-link text-neutral-900 hover:text-black">About</a>
+            <a href="#skills" class="interactive-nav-link text-neutral-900 hover:text-black">Skills</a>
+            <a href="#experience" class="interactive-nav-link text-neutral-900 hover:text-black">Experience</a>
+            <a href="#projects" class="interactive-nav-link text-neutral-900 hover:text-black">Projects</a>
+        </div>
+    </nav>
+
+    <section class="min-h-screen w-full flex flex-col justify-center px-6 md:px-16 pt-24 pb-12 relative bg-[#F8F9FA]">
+        <div class="max-w-6xl w-full mx-auto">
+            <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 mb-6 flex items-center gap-2 animate-fade-in">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 
+                Business Analyst Aspirant [cite: 5]
+            </p>
+            
+            <h1 class="text-4xl md:text-8xl font-extrabold tracking-tight leading-[0.95] uppercase mb-8 text-neutral-900">
+                <span class="text-mask"><span class="reveal-hero-text inline-block">Data-Driven</span></span><br>
+                <span class="text-mask"><span class="reveal-hero-text inline-block text-neutral-400 font-light">Insights &</span></span><br>
+                <span class="text-mask"><span class="reveal-hero-text inline-block">Visualization. [cite: 5]</span></span>
+            </h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 pt-8 border-t border-neutral-200">
+                <p class="text-neutral-600 text-base md:text-lg leading-relaxed max-w-lg">
+                    Expertise in turning raw data into interactive, actionable business intelligence assets. Skilled in bridging technical analytics with business strategy[cite: 5, 6, 23].
+                </p>
+                <div class="flex flex-col justify-end space-y-2 text-xs font-mono text-neutral-500 md:text-right">
+                    <p>+91 8778259311 [cite: 1]</p>
+                    <p>sriyasmoideen@gmail.com [cite: 3]</p>
+                    <p>Coimbatore, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 px-6 md:px-16 bg-white border-y border-neutral-200">
+        <div class="max-w-6xl w-full mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-16 font-mono">[ 01 / Core Skillset ] [cite: 7]</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
+                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
+                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Analytics & BI [cite: 8]</h3>
+                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
+                        <li>Data Analysis [cite: 8]</li>
+                        <li>Data Visualization [cite: 8]</li>
+                        <li>Business Intelligence [cite: 8]</li>
+                        <li>Data Modeling [cite: 13]</li>
+                    </ul>
+                </div>
+                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
+                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Databases & Tools [cite: 9]</h3>
+                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
+                        <li>SQL (DDL, DML) [cite: 9]</li>
+                        <li>Power BI [cite: 9]</li>
+                        <li>Advanced Excel [cite: 9]</li>
+                    </ul>
+                </div>
+                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
+                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Development [cite: 10]</h3>
+                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
+                        <li>Python (NumPy, Pandas) [cite: 10]</li>
+                        <li>Matplotlib [cite: 10]</li>
+                        <li>JavaScript & APIs [cite: 12]</li>
+                    </ul>
+                </div>
+                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
+                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Methodology [cite: 11]</h3>
+                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
+                        <li>Statistical Analysis [cite: 11]</li>
+                        <li>SPSS Software [cite: 11]</li>
+                        <li>Data Cleaning [cite: 13]</li>
+                        <li>Data Transformation [cite: 13]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 px-6 md:px-16 bg-[#F8F9FA]">
+        <div class="max-w-6xl w-full mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-16 font-mono">[ 02 / Professional Experience ] [cite: 14]</h2>
+            
+            <div class="space-y-12">
+                <div class="experience-row grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-neutral-200 hover:bg-neutral-100/50 transition-colors p-4 rounded">
+                    <div class="text-xs font-mono text-neutral-500 uppercase">Recent</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-neutral-900">AI Intern [cite: 15]</h3>
+                        <p class="text-sm font-mono text-neutral-500">Phoenix Softech [cite: 15]</p>
+                    </div>
+                    <ul class="text-sm text-neutral-600 space-y-2 list-disc list-inside md:list-outside">
+                        <li>Performed data analysis using Python libraries including NumPy and Pandas[cite: 16].</li>
+                        <li>Created clean visualizations using Matplotlib to identify trends[cite: 16].</li>
+                        <li>Applied targeted data cleaning & preprocessing techniques to improve underlying quality[cite: 17].</li>
+                    </ul>
+                </div>
+
+                <div class="experience-row grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-neutral-200 hover:bg-neutral-100/50 transition-colors p-4 rounded">
+                    <div class="text-xs font-mono text-neutral-500 uppercase">Auditing</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-neutral-900">Stock Auditing Intern [cite: 17]</h3>
+                        <p class="text-sm font-mono text-neutral-500">L&T (Larsen & Toubro) [cite: 17]</p>
+                    </div>
+                    <ul class="text-sm text-neutral-600 space-y-2 list-disc list-inside md:list-outside">
+                        <li>Conducted physical and systemic inventory audits ensuring strict operational standards[cite: 18].</li>
+                        <li>Verified historical stock data accuracy and built structured components for audit reporting[cite: 18].</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 md:px-16 bg-white">
+        <div class="max-w-6xl w-full mx-auto">
+            <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-16 font-mono">[ 03 / Selected Deliverables ] [cite: 19]</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="project-card group cursor-pointer border border-neutral-200 p-8 rounded-lg bg-[#F8F9FA] hover:bg-black hover:text-white transition-all duration-500 ease-out">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="text-xs font-mono px-3 py-1 border border-neutral-300 group-hover:border-neutral-700 rounded-full transition-colors">Power BI / Excel [cite: 22, 23]</span>
+                        <span class="text-xs font-mono text-neutral-400">Jul — Aug 2025 [cite: 21]</span>
+                    </div>
+                    <h3 class="text-2xl font-bold tracking-tight mb-4">College Infrastructure & Finance Analytics Dashboard [cite: 20]</h3>
+                    <p class="text-neutral-500 group-hover:text-neutral-300 text-sm mb-6 leading-relaxed">
+                        Developed high-level interactive production dashboards mapping institutional infrastructure metrics directly against operational cost margins[cite: 22]. Streamlined structural visual systems to maximize stakeholder reporting efficiency[cite: 24].
+                    </p>
+                    <div class="text-xs font-mono underline opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        View Matrix Breakdown →
+                    </div>
+                </div>
+
+                <div class="project-card group cursor-pointer border border-neutral-200 p-8 rounded-lg bg-[#F8F9FA] hover:bg-black hover:text-white transition-all duration-500 ease-out">
+                    <div class="flex justify-between items-start mb-12">
+                        <span class="text-xs font-mono px-3 py-1 border border-neutral-300 group-hover:border-neutral-700 rounded-full transition-colors">Research / SPSS [cite: 27]</span>
+                        <span class="text-xs font-mono text-neutral-400">Publication [cite: 25]</span>
+                    </div>
+                    <h3 class="text-2xl font-bold tracking-tight mb-4">User Perception Towards E-Wallet Services [cite: 26]</h3>
+                    <p class="text-neutral-500 group-hover:text-neutral-300 text-sm mb-6 leading-relaxed">
+                        Conducted statistical empirical survey research focused on tracking consumer behavior and digital transaction adoption models[cite: 27]. Leveraged deep quantitative computational insight reporting using specialized statistical packages[cite: 27].
+                    </p>
+                    <div class="text-xs font-mono underline opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Read Analytics Paper →
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 md:px-16 bg-[#F8F9FA] border-t border-neutral-200">
+        <div class="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            
+            <div>
+                <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-10 font-mono">[ 04 / Credentials ] [cite: 32]</h2>
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-xs font-mono text-neutral-400">2024 - 2026 [cite: 33]</span>
+                        <h3 class="text-lg font-bold text-neutral-900">MBA — Business Analytics & Marketing [cite: 33]</h3>
+                        <p class="text-sm text-neutral-600">KV Institute of Management and Information Studies, Coimbatore (Anna University) [cite: 33]</p>
+                    </div>
+                    <div class="pt-4 border-t border-neutral-200">
+                        <span class="text-xs font-mono text-neutral-400">2021 - 2024 [cite: 33]</span>
+                        <h3 class="text-lg font-bold text-neutral-900">Bachelor of Commerce (B.Com) [cite: 33]</h3>
+                        <p class="text-sm text-neutral-600">Madurai Kamaraj University — 55% [cite: 33]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-10 font-mono">[ 05 / Certifications ] [cite: 28]</h2>
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center py-3 border-b border-neutral-200">
+                        <span class="text-sm font-medium text-neutral-800">CPBFI Certified Program (Banking, Finance, Insurance) [cite: 31]</span>
+                        <span class="text-xs font-mono text-neutral-400">Bajaj Finserv [cite: 31]</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-neutral-200">
+                        <span class="text-sm font-medium text-neutral-800">Advanced Power BI Strategy Workshop [cite: 30]</span>
+                        <span class="text-xs font-mono text-neutral-400">Apr 2025 [cite: 29]</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 md:px-16 bg-white text-center text-xs font-mono text-neutral-400 tracking-wider">
+        <div class="max-w-6xl w-full mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 Riyas Moideen S. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="mailto:sriyasmoideen@gmail.com" class="hover:text-black transition-colors">[ Email ] [cite: 3]</a>
+                <a href="#" class="hover:text-black transition-colors">[ LinkedIn Profile ] [cite: 3]</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Ensure GSAP plugins are initialized
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Fluid Custom Interactive Liquid Cursor Logic
+        const cursor = document.getElementById('magnetic-cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.08,
+                ease: "power1.out"
+            });
+        });
+
+        // Trigger dynamic scaling changes on hover states over interactive links
+        document.querySelectorAll('a, .project-card, .skill-group').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                gsap.to(cursor, { scale: 3.5, backgroundColor: '#ffffff' });
+            });
+            element.addEventListener('mouseleave', () => {
+                gsap.to(cursor, { scale: 1, backgroundColor: '#000000' });
+            });
+        });
+
+        // 2. Cinematic Typography Masked Scroll Entrance on Hero Loader
+        gsap.from(".reveal-hero-text", {
+            y: "100%",
+            duration: 1.4,
+            stagger: 0.15,
+            ease: "power4.out"
+        });
+
+        // 3. Staggered Entrance Animations for Rows and Cards via ScrollTrigger
+        gsap.from(".skill-group", {
+            scrollTrigger: {
+                trigger: "#skills",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out"
+        });
+
+        gsap.from(".experience-row", {
+            scrollTrigger: {
+                trigger: "#experience",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            },
+            x: -30,
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.15,
+            ease: "power2.out"
+        });
+
+        gsap.from(".project-card", {
+            scrollTrigger: {
+                trigger: "#projects",
+                start: "top 75%",
+                toggleActions: "play none none reverse"
+            },
+            y: 60,
+            opacity: 0,
+            duration: 1.1,
+            stagger: 0.2,
+            ease: "power4.out"
+        });
+    </script>
+</body>
+</html>
