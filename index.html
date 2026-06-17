@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riyas Moideen S | OS Workspace Terminal</title>
-    <!-- Tailwind CSS for modern structure -->
+    <title>Riyas Moideen S | Interactive Analytics Workspace</title>
+    <!-- Tailwind CSS for OS grid structuring -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP for OS physics, window transitions, and micro-gestures -->
+    <!-- GSAP for OS window scaling and kinetic mouse tracking -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <style>
         html, body {
@@ -15,218 +16,243 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #D32F2F; /* Premium Cinematic Deep Crimson Red Background */
+            background-color: #D32F2F; /* Rich Crimson Red Studio Base */
             color: #111111;
             font-family: 'SF Pro Text', '-apple-system', BlinkMacSystemFont, sans-serif;
             -webkit-font-smoothing: antialiased;
-            overflow: hidden;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
         }
 
-        /* Tech Blueprint Grid overlaid on the Red Background */
+        /* Technical Blueprint Grid Matrix system overlay scaled over red */
         .desktop-grid {
-            background-size: 50px 50px;
+            background-size: 30px 30px;
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
         }
 
-        /* High-Definition Glassmorphism styled browser frames */
-        .chrome-blur {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+        /* Real-time Film Grain Matte Texture Layer */
+        .grain-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
-        /* Browser Window Shadows */
-        .chrome-shadow {
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.1);
+        /* Chrome Tab UI Styling */
+        .chrome-tab {
+            clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 100%, 0% 100%);
         }
 
-        /* Custom Scrollbars inside Chrome Window panes */
+        /* Custom scroll paths inside the browser frames */
         .window-content::-webkit-scrollbar {
             width: 6px;
         }
-        .window-content::-webkit-scrollbar-track {
-            background: #FAF9F6;
-        }
         .window-content::-webkit-scrollbar-thumb {
-            background: #D1D1D6;
-            border-radius: 10px;
+            background: #E0E0E0;
+            border-radius: 4px;
         }
         .window-content::-webkit-scrollbar-thumb:hover {
             background: #D32F2F;
         }
 
-        /* UI Toggle Switch (Doggle Effect) */
-        .toggle-dot {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Alternate Interactive Theme States (Managed via JS Toggle) */
+        .dark-mode-active {
+            background-color: #1A0505 !important;
         }
-        input:checked ~ .toggle-bg {
-            background-color: #D32F2F;
+        .dark-mode-active #browser-mainframe {
+            background-color: #18181C !important;
+            color: #F5F5F5 !important;
+            border-color: #2D2D35 !important;
         }
-        input:checked ~ .toggle-dot {
-            transform: translateX(100%);
+        .dark-mode-active .bg-white {
+            background-color: #222228 !important;
+            color: #FFFFFF !important;
+            border-color: #33333B !important;
         }
+        .dark-mode-active .text-neutral-900 { color: #FFFFFF !important; }
+        .dark-mode-active .text-neutral-600 { color: #BABABA !important; }
+        .dark-mode-active .border-neutral-200 { border-color: #2D2D35 !important; }
     </style>
 </head>
-<body class="desktop-grid relative w-full h-full flex flex-col justify-between p-4 md:p-6 select-none">
+<body class="selection:bg-red-600 selection:text-white desktop-grid relative min-h-screen pb-12">
 
-    <!-- TOP SYSTEM STATUS BAR -->
-    <header class="w-full h-10 bg-white/10 text-white rounded-lg flex justify-between items-center px-4 chrome-blur border border-white/10 z-40 text-xs font-mono">
-        <div class="flex items-center space-x-3">
-            <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
-            <span class="font-bold tracking-tight">RIYAS_WORKSPACE_OS v2.0</span>
+    <!-- Film Grain Accent Layer -->
+    <div class="grain-layer"></div>
+
+    <!-- Micro Interaction Cursor Follower -->
+    <div id="os-cursor" class="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-50 transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"></div>
+
+    <!-- UPPER SYSTEM TOPBAR -->
+    <header class="w-full h-9 bg-black/20 text-white/90 flex justify-between items-center px-6 text-xs font-mono tracking-wider z-40 relative">
+        <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span class="font-bold">RIYAS_MOIDEEN // ENGINE v2.0</span>
         </div>
-        <div class="flex items-center space-x-6">
+        <div class="flex items-center space-x-6 text-[11px]">
             <span class="hidden sm:inline">COIMBATORE, IN</span>
-            <span id="system-time">00:00:00</span>
+            <span id="os-clock">00:00:00</span>
         </div>
     </header>
 
-    <!-- MAIN CHROME-STYLE FLOATING APPLICATION WINDOW -->
-    <main class="w-full flex-grow flex items-center justify-center py-4 z-20">
+    <!-- CHROME INTERFACE CONTAINER WINDOW FRAME -->
+    <main class="w-full pt-6 flex flex-col items-center justify-center px-3 md:px-12 relative z-10">
         
-        <div id="chrome-window" class="w-full max-w-5xl h-[80vh] bg-[#FAF9F6] rounded-xl chrome-shadow flex flex-col overflow-hidden border border-neutral-200 opacity-0 scale-95">
+        <div id="browser-mainframe" class="w-full max-w-6xl bg-[#F4F4F6] border border-black/20 rounded-xl shadow-2xl flex flex-col overflow-hidden opacity-0 scale-95 transition-colors duration-500">
             
-            <!-- GOOGLE CHROME BROWSER TOP BAR INTERFACE -->
-            <div class="h-14 bg-[#EAEAEA] border-b border-neutral-300 flex flex-col justify-end px-3">
-                
-                <!-- Chrome Window Controls and Tabs -->
-                <div class="flex items-center justify-between w-full">
-                    <div class="flex items-center space-x-2 pb-2">
-                        <div class="w-3 h-3 bg-red-400 rounded-full cursor-pointer"></div>
-                        <div class="w-3 h-3 bg-yellow-400 rounded-full cursor-pointer"></div>
-                        <div class="w-3 h-3 bg-green-400 rounded-full cursor-pointer"></div>
-                    </div>
-
-                    <!-- Active Chrome Tab Blueprint -->
-                    <div class="flex-grow max-w-xs mx-4">
-                        <div class="bg-[#FAF9F6] text-neutral-800 text-xs font-sans px-4 py-2 rounded-t-lg border-t border-x border-neutral-300 flex items-center justify-between shadow-sm">
-                            <span class="truncate font-medium flex items-center gap-2">
-                                <svg class="w-3 h-3 text-[#D32F2F]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8 8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8z"/></svg>
-                                Riyas Moideen — Portfolio.html
-                            </span>
-                            <span class="text-neutral-400 hover:text-black cursor-pointer text-[10px]">✕</span>
-                        </div>
-                    </div>
-                    <div class="w-16"></div>
+            <!-- GOOGLE CHROME TAB DECK INTERFACE -->
+            <div class="h-11 bg-[#E8E8EC] border-b border-neutral-300 flex items-end justify-between px-4 select-none">
+                <div class="flex items-center space-x-2 pb-2">
+                    <div class="w-3 h-3 bg-red-400 rounded-full cursor-pointer"></div>
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full cursor-pointer"></div>
+                    <div class="w-3 h-3 bg-green-400 rounded-full cursor-pointer"></div>
                 </div>
 
-                <!-- Chrome Navigation Bar & URL Field Address -->
-                <div class="h-9 bg-[#FAF9F6] border-t border-neutral-300 flex items-center px-2 space-x-3 text-neutral-500">
-                    <div class="flex space-x-2 text-sm">
-                        <span class="cursor-pointer hover:text-black">←</span>
-                        <span class="cursor-pointer hover:text-black">→</span>
-                        <span class="cursor-pointer hover:text-black">↻</span>
+                <!-- Chrome Tabs Layout Grid -->
+                <div class="flex items-end flex-grow max-w-xl ml-6 space-x-1">
+                    <div class="chrome-tab h-8 bg-white px-6 text-xs font-sans font-medium text-neutral-800 flex items-center space-x-2 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                        <span class="truncate">Riyas Moideen - Portfolio</span>
                     </div>
-                    <!-- Unified Omni Address Box Bar -->
-                    <div class="flex-grow bg-[#F1F3F4] border border-neutral-200 rounded-full text-[11px] font-mono px-4 py-1 flex items-center text-neutral-400 shadow-inner">
-                        <span class="text-emerald-600 mr-1">https://</span><span class="text-neutral-700">riyasmoideen.dev/analytics_matrix</span>
+                    <div class="chrome-tab h-7 bg-neutral-300/50 hover:bg-neutral-300 px-4 text-[11px] text-neutral-500 flex items-center space-x-2 cursor-pointer transition-colors hidden sm:flex">
+                        <span>Workspace.db</span>
                     </div>
+                </div>
+
+                <!-- GRAPHIC GRAPHICAL MODE INTERACTION TOGGLE (DOGGLE Switch) -->
+                <div class="pb-1.5 flex items-center space-x-2">
+                    <span class="text-[10px] font-mono text-neutral-500 font-bold uppercase hidden sm:inline">Interface Graphics Mode:</span>
+                    <button id="graphic-toggle" class="w-12 h-6 bg-neutral-300 rounded-full p-0.5 border border-neutral-400/50 flex items-center transition-colors relative shadow-inner">
+                        <div id="toggle-node" class="w-4.5 h-4.5 bg-red-600 rounded-full shadow-md transition-transform duration-300 transform translate-x-0"></div>
+                    </button>
                 </div>
             </div>
 
-            <!-- CHROME RUNTIME BROWSER VIEWPORT CONTENT -->
-            <div class="window-content flex-grow overflow-y-auto bg-[#FAF9F6] p-6 md:p-12">
-                
-                <!-- HERO IDENTITY MODULE -->
-                <div class="border-b border-neutral-200 pb-10 mb-10">
-                    <div class="flex justify-between items-start gap-4">
-                        <div>
-                            <p class="text-xs font-mono uppercase tracking-[0.2em] text-[#D32F2F] font-bold mb-2">// DATA PIPELINE INSIGHTS</p>
-                            <h1 class="text-5xl md:text-7xl font-black tracking-tighter leading-none text-neutral-900 uppercase">
-                                RIYAS MOIDEEN S
-                            </h1>
-                        </div>
-                        
-                        <!-- HIGH RE-EFFECTED CONTROLS (DOGGLE / UTILITY SWITCH) -->
-                        <div class="flex flex-col items-end gap-2">
-                            <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Toggle Workspace System</span>
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" id="doggle-switch" class="sr-only peer">
-                                <div class="w-11 h-6 bg-neutral-200 rounded-full toggle-bg border border-neutral-300/80"></div>
-                                <div class="absolute left-1 top-1 bg-white border border-neutral-300 w-4 h-4 rounded-full toggle-dot shadow-sm"></div>
-                            </label>
-                        </div>
+            <!-- CHROME BROWSER URL ADDRESS CONTROLS BAR -->
+            <div class="h-10 bg-white border-b border-neutral-200 flex items-center px-4 space-x-4">
+                <div class="flex items-center space-x-3 text-neutral-400">
+                    <svg class="w-4 h-4 cursor-pointer hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <svg class="w-4 h-4 cursor-pointer hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <svg class="w-3.5 h-3.5 cursor-pointer hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18.2"></path></svg>
+                </div>
+                <!-- Dynamic URL input block -->
+                <div class="flex-grow bg-neutral-100 border border-neutral-200 rounded-full h-7 flex items-center px-4 justify-between shadow-inner">
+                    <div class="flex items-center space-x-2 text-xs font-mono text-neutral-500 truncate">
+                        <span class="text-emerald-600 font-bold">https://</span><span>riyasmoideen.dev/bi_matrix_workspace</span>
                     </div>
+                    <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+            </div>
+
+            <!-- CORE FRAME WINDOW SCROLLING CONTENT REGION -->
+            <div class="window-content overflow-y-auto max-h-[70vh] bg-white p-6 md:p-12 transition-colors duration-500">
+                
+                <!-- BROWSER APP CONTENT HERO SECTOR -->
+                <div class="border-b border-neutral-200 pb-12 mb-12 relative">
+                    <p class="text-xs font-mono uppercase tracking-[0.2em] text-red-600 font-bold mb-2">// Business Analytics Platform</p>
                     
-                    <p id="workspace-desc" class="mt-6 text-neutral-600 text-base md:text-lg font-light leading-relaxed max-w-2xl transition-all duration-300">
-                        Synthesizing multi-layered structural records into actionable visual strategic assets. Expert in configuring cross-functional data intelligence pipelines and processing methodologies.
+                    <!-- Giant Typography Header Layout Identity -->
+                    <h1 class="text-[7.5vw] font-black tracking-tighter leading-[0.85] text-neutral-900 uppercase">
+                        RIYAS<br><span class="text-neutral-300">MOIDEEN S</span>
+                    </h1>
+                    
+                    <p class="mt-6 text-neutral-600 font-light text-base md:text-lg max-w-2xl leading-relaxed">
+                        Synthesizing multi-layered structural records into interactive visual blueprints. Specializing in high-performance Microsoft Power BI engine layouts and crisp Python database transformations.
                     </p>
                 </div>
 
-                <!-- CORE TECHNICAL CAPABILITIES FRAME MATRIX -->
-                <div class="mb-12">
-                    <h2 class="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-6">[ 01 / Analytics Stack ]</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="border border-neutral-200 p-6 rounded-lg bg-white shadow-sm hover:border-[#D32F2F] transition-all duration-300">
-                            <h3 class="text-xs font-mono uppercase font-bold text-neutral-400 mb-3">// Architecture & BI</h3>
-                            <p class="text-sm font-sans text-neutral-700 leading-relaxed font-medium">Power BI • Advanced Relational Models • SQL Database Queries (DDL/DML Structure Control)</p>
+                <!-- 01 / LIVE ANALYTICS CORE MATRICES -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="text-xs font-mono uppercase tracking-wider text-red-600 font-bold">[ 01 / Capability Modules ]</span>
+                        <div class="h-[1px] bg-neutral-200 flex-grow ml-4"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="border border-neutral-200 p-6 rounded-xl bg-neutral-50/40 hover:border-red-600 transition-colors group">
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-2 group-hover:text-red-600 transition-colors">Business Intelligence</h3>
+                            <p class="text-xs text-neutral-500 font-mono leading-relaxed">Power BI Core Dashboards • Structured SQL Execution (DDL/DML Queries) • Relational Matrix Mapping Architecture</p>
                         </div>
-                        <div class="border border-neutral-200 p-6 rounded-lg bg-white shadow-sm hover:border-[#D32F2F] transition-all duration-300">
-                            <h3 class="text-xs font-mono uppercase font-bold text-neutral-400 mb-3">// Computation Engine</h3>
-                            <p class="text-sm font-sans text-neutral-700 leading-relaxed font-medium">Python Core Frameworks • Pandas Modules • NumPy Matrix Control • Matplotlib Data Plot Graphics</p>
+                        <div class="border border-neutral-200 p-6 rounded-xl bg-neutral-50/40 hover:border-red-600 transition-colors group">
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-2 group-hover:text-red-600 transition-colors">Data Computing</h3>
+                            <p class="text-xs text-neutral-500 font-mono leading-relaxed">Python Environment Scripts • NumPy Structural Processing • Pandas Vectors • Matplotlib Visualization Graphs</p>
                         </div>
-                        <div class="border border-neutral-200 p-6 rounded-lg bg-white shadow-sm hover:border-[#D32F2F] transition-all duration-300">
-                            <h3 class="text-xs font-mono uppercase font-bold text-neutral-400 mb-3">// Methodology</h3>
-                            <p class="text-sm font-sans text-neutral-700 leading-relaxed font-medium">Statistical Computing Packages • Preprocessing Quality Frameworks • SPSS System Data Verification</p>
+                        <div class="border border-neutral-200 p-6 rounded-xl bg-neutral-50/40 hover:border-red-600 transition-colors group">
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-2 group-hover:text-red-600 transition-colors">Statistical Logic</h3>
+                            <p class="text-xs text-neutral-500 font-mono leading-relaxed">SPSS System Computing • Advanced Variable Preprocessing Models • Empirical Consumer Trend Profiling</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- OPERATIONAL DELIVERABLES FILE DIRECTORY -->
-                <div class="mb-12">
-                    <h2 class="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-6">[ 02 / Project Inventory Files ]</h2>
-                    <div class="border border-neutral-200 rounded-lg overflow-hidden bg-white shadow-sm">
-                        
-                        <!-- Project Line Item 1 -->
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 border-b border-neutral-100 hover:bg-neutral-50 transition-colors cursor-pointer gap-2">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-xs font-mono text-[#D32F2F] font-bold">[BI_FILE]</span>
-                                <span class="text-sm font-bold text-neutral-800">College Infrastructure & Finance Dashboard Architecture</span>
-                            </div>
-                            <div class="text-xs font-mono text-neutral-400">Power BI Engine // 2025</div>
-                        </div>
-
-                        <!-- Project Line Item 2 -->
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 hover:bg-neutral-50 transition-colors cursor-pointer gap-2">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-xs font-mono text-[#D32F2F] font-bold">[SPSS_DOC]</span>
-                                <span class="text-sm font-bold text-neutral-800">User Perception Metrics Strategy Towards E-Wallet Networks</span>
-                            </div>
-                            <div class="text-xs font-mono text-neutral-400">SPSS Analytics // Empirical</div>
-                        </div>
-
+                <!-- 02 / BROWSER DELIVERABLES SECTION -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="text-xs font-mono uppercase tracking-wider text-red-600 font-bold">[ 02 / Operational Production Assets ]</span>
+                        <div class="h-[1px] bg-neutral-200 flex-grow ml-4"></div>
                     </div>
-                </div>
-
-                <!-- FOOTPRINT TIMELINE REGISTRY LOGS -->
-                <div class="mb-12">
-                    <h2 class="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-6">[ 03 / Career Operational Track ]</h2>
+                    
                     <div class="space-y-4">
-                        <div class="p-4 border-l-2 border-[#D32F2F] bg-white rounded-r shadow-sm">
-                            <span class="text-[10px] font-mono text-neutral-400 block mb-1">RECENT — Phoenix Softech</span>
-                            <h4 class="text-sm font-bold text-neutral-900">AI Intern</h4>
-                            <p class="text-xs text-neutral-600 mt-1">Configured structural automated computation paths via Python modules to process high-level enterprise analysis variables.</p>
+                        <!-- Project Asset Module 1 -->
+                        <div class="group border border-neutral-200 p-6 rounded-xl bg-neutral-50/50 hover:bg-red-600 hover:text-white transition-all duration-500 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <span class="text-[10px] font-mono text-neutral-400 group-hover:text-white/80 block mb-1">POWER BI BUSINESS INTEL</span>
+                                <h4 class="text-lg font-bold tracking-tight">Institutional Infrastructure & Cost Optimization Dashboard</h4>
+                            </div>
+                            <span class="text-xs font-mono border border-neutral-200 group-hover:border-white px-3 py-1 rounded-full whitespace-nowrap">Load System Dataset →</span>
                         </div>
-                        <div class="p-4 border-l-2 border-neutral-300 bg-white rounded-r shadow-sm">
-                            <span class="text-[10px] font-mono text-neutral-400 block mb-1">AUDIT STACK — L&T (Larsen & Toubro)</span>
-                            <h4 class="text-sm font-bold text-neutral-900">Stock Auditing Intern</h4>
-                            <p class="text-xs text-neutral-600 mt-1">Managed inventory and asset reporting parameters to secure structural accuracy verification targets.</p>
+
+                        <!-- Project Asset Module 2 -->
+                        <div class="group border border-neutral-200 p-6 rounded-xl bg-neutral-50/50 hover:bg-red-600 hover:text-white transition-all duration-500 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <span class="text-[10px] font-mono text-neutral-400 group-hover:text-white/80 block mb-1">SPSS COMPUTATION MODEL</span>
+                                <h4 class="text-lg font-bold tracking-tight">User Adoption Metrics Strategy Assessment Across E-Wallet Portals</h4>
+                            </div>
+                            <span class="text-xs font-mono border border-neutral-200 group-hover:border-white px-3 py-1 rounded-full whitespace-nowrap">Load System Dataset →</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- SYSTEM REGISTRY CREDENTIALS -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-neutral-200 pt-8 text-xs font-mono text-neutral-500">
+                <!-- 03 / PRACTICAL INDUSTRIAL LOGS -->
+                <div class="mb-12">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="text-xs font-mono uppercase tracking-wider text-red-600 font-bold">[ 03 / Core Employment Records ]</span>
+                        <div class="h-[1px] bg-neutral-200 flex-grow ml-4"></div>
+                    </div>
+                    
+                    <div class="border border-neutral-200 rounded-xl overflow-hidden bg-white shadow-sm">
+                        <div class="grid grid-cols-3 bg-neutral-100/80 p-3 text-[10px] font-mono text-neutral-400 border-b border-neutral-200">
+                            <div>TIMESTAMP RECOGNITION</div>
+                            <div>OPERATIONAL SYSTEM ENTITY</div>
+                            <div>CORE ARCHITECTURAL OBJECTIVE</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 p-4 text-xs font-mono border-b border-neutral-100 items-center gap-2">
+                            <div class="text-neutral-400">2025 — RUNNING</div>
+                            <div class="font-bold text-neutral-900">AI Intern @ Phoenix Softech</div>
+                            <div class="text-neutral-500">Configuring automated structural transformation matrices utilizing Python Pandas arrays.</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 p-4 text-xs font-mono items-center gap-2">
+                            <div class="text-neutral-400">AUDIT VERIFICATION</div>
+                            <div class="font-bold text-neutral-900">Stock Auditing Intern @ L&T</div>
+                            <div class="text-neutral-500">Managed historical industrial asset reporting logs under rigorous verification benchmarks.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 / EDUCATION INFRASTRUCTURE -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-neutral-200 pt-8 text-xs font-mono text-neutral-500">
                     <div>
-                        <span class="block font-bold text-neutral-800 mb-2">// Academic Registry</span>
-                        <p class="text-neutral-700 font-sans font-bold">MBA (Business Analytics & Marketing) — 2024-2026</p>
-                        <p class="text-[11px] text-neutral-400">KV Institute of Management Studies (Anna University)</p>
+                        <span class="block font-bold text-neutral-900 mb-2">// Academic Registry</span>
+                        <p class="mb-1 text-neutral-700 font-sans font-bold">MBA in Business Analytics & Marketing (2024 - 2026)</p>
+                        <p class="text-[11px] mb-3">KV Institute of Management & Info Studies (Anna University)</p>
+                        <p class="text-neutral-700 font-sans font-bold">Bachelor of Commerce (2021 - 2024)</p>
+                        <p class="text-[11px]">Madurai Kamaraj University — Aggregate 55%</p>
                     </div>
                     <div>
-                        <span class="block font-bold text-neutral-800 mb-2">// Communications Node</span>
-                        <p class="text-neutral-700 font-sans">+91 8778259311 • sriyasmoideen@gmail.com</p>
-                        <p class="text-[11px] text-neutral-400">LinkedIn: Verified Active Connection Network</p>
+                        <span class="block font-bold text-neutral-900 mb-2">// Authorized Accreditations</span>
+                        <p class="text-neutral-700 font-sans mb-1">CPBFI Program Certificate Module • Bajaj Finserv</p>
+                        <p class="text-neutral-700 font-sans">Enterprise Advanced Power BI Engineering Architecture Workshop</p>
                     </div>
                 </div>
 
@@ -234,75 +260,82 @@
         </div>
     </main>
 
-    <!-- LOWER SYSTEM DOCK (CHROME OS / MAC SYST STYLE) -->
-    <footer class="w-full h-16 bg-white/10 rounded-xl flex items-center justify-center space-x-6 px-6 chrome-blur border border-white/10 z-40 max-w-md mx-auto mb-2 shadow-xl">
-        <!-- Dock Application Shortcut Icons -->
-        <a href="#chrome-window" class="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:scale-110 transition-transform shadow-md group border border-white/20">
-            <svg class="w-5 h-5 text-neutral-800 group-hover:text-[#D32F2F] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        </a>
-        <a href="mailto:sriyasmoideen@gmail.com" class="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:scale-110 transition-transform shadow-md group border border-white/20">
-            <svg class="w-5 h-5 text-neutral-800 group-hover:text-[#D32F2F] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-        <div class="w-[1px] h-6 bg-white/20"></div>
-        <!-- Active Application Indicator Dot Node -->
-        <div class="flex flex-col items-center">
-            <div class="w-10 h-10 bg-neutral-900 text-white rounded-lg flex items-center justify-center shadow-md border border-neutral-800">
-                <span class="text-xs font-mono font-bold">RM</span>
-            </div>
-            <span class="w-1 h-1 bg-white rounded-full mt-1"></span>
+    <!-- FLOATING SYSTEM CONSOLE INFORMATION FOOTER -->
+    <footer class="text-center w-full mt-8 text-white/60 font-mono text-[11px] space-y-2">
+        <p>© 2026 RIYAS MOIDEEN S. ALL WORKSPACE PARAMETERS ACTIVE.</p>
+        <div class="flex justify-center space-x-6 text-white/80">
+            <a href="mailto:sriyasmoideen@gmail.com" class="hover:underline">sriyasmoideen@gmail.com</a>
+            <span>•</span>
+            <p>+91 8778259311</p>
         </div>
     </footer>
 
-    <!-- INTERACTIVE PHYSICS ENGINE RULES -->
+    <!-- INTERACTIVE ENGINE LOGIC SCRIPTING ENGINE -->
     <script>
-        // System Active Runtime Clock System Updates
-        function initSystemClock() {
-            const display = document.getElementById('system-time');
-            const handler = () => {
-                const current = new Date();
-                display.textContent = current.toTimeString().split(' ')[0];
-            };
-            setInterval(handler, 1000);
-            handler();
+        // Real-time Top Header System Clock Calculation Logic
+        function updateClock() {
+            const display = document.getElementById('os-clock');
+            const targetTime = new Date();
+            display.textContent = targetTime.toTimeString().split(' ')[0];
         }
-        initSystemClock();
+        setInterval(updateClock, 1000);
+        updateClock();
 
-        // Chrome Window Launch Animation Sequences on Frame Ready Execution
+        // Initialize Cinematic Animations via GSAP Engine Library
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Fluid Kinetic Follower Node Pointer Track
+        const followCursor = document.getElementById('os-cursor');
+        document.addEventListener('mousemove', (event) => {
+            gsap.to(followCursor, {
+                x: event.clientX,
+                y: event.clientY,
+                duration: 0.05,
+                ease: "power1.out"
+            });
+        });
+
+        // Entrance animation orchestration on page lifecycle complete
         window.addEventListener('DOMContentLoaded', () => {
-            gsap.to("#chrome-window", {
+            gsap.to("#browser-mainframe", {
                 opacity: 1,
                 scale: 1,
-                duration: 1,
+                duration: 1.1,
                 ease: "power4.out"
             });
         });
 
-        // 3D Parallax Interface Mouse Interaction Engine Logic
-        const windowFrame = document.getElementById('chrome-window');
+        // Kinetic Parallax 3D Card Window Float Script logic
+        const browserFrame = document.getElementById('browser-mainframe');
         document.addEventListener('mousemove', (e) => {
-            const axisX = (e.clientX - window.innerWidth / 2) * 0.015;
-            const axisY = (e.clientY - window.innerHeight / 2) * 0.015;
+            const horizonX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const horizonY = (e.clientY - window.innerHeight / 2) * 0.01;
             
-            gsap.to(windowFrame, {
-                rotateY: axisX,
-                rotateX: -axisY,
-                transformPerspective: 1500,
+            gsap.to(browserFrame, {
+                rotateY: horizonX,
+                rotateX: -horizonY,
+                transformPerspective: 1400,
                 duration: 0.5,
                 ease: "power2.out"
             });
         });
 
-        // Interactive "Doggle" System Toggle Interface Controller Mechanism
-        const doggleInput = document.getElementById('doggle-switch');
-        const summaryText = document.getElementById('workspace-desc');
-        
-        doggleInput.addEventListener('change', () => {
-            if(doggleInput.checked) {
-                summaryText.textContent = "[SYSTEM OVERRIDE]: Computational analytical sequence initialized. Compiling quantitative predictive models inside SPSS matrices and executing automated validation routines.";
-                summaryText.classList.add('text-red-600', 'font-mono', 'text-xs');
+        // DOCK DEVICE GRAPHICAL MODE TOGGLE ENGINE (Doggle Mechanism Switch)
+        const toggleButton = document.getElementById('graphic-toggle');
+        const toggleNode = document.getElementById('toggle-node');
+        const bodyTag = document.body;
+        let isDarkMode = false;
+
+        toggleButton.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                bodyTag.classList.add('dark-mode-active');
+                gsap.to(toggleNode, { x: 24, backgroundColor: '#FFFFFF', duration: 0.25 });
+                gsap.to(toggleButton, { backgroundColor: '#E53935', duration: 0.25 });
             } else {
-                summaryText.textContent = "Synthesizing multi-layered structural records into actionable visual strategic assets. Expert in configuring cross-functional data intelligence pipelines and processing methodologies.";
-                summaryText.classList.remove('text-red-600', 'font-mono', 'text-xs');
+                bodyTag.classList.remove('dark-mode-active');
+                gsap.to(toggleNode, { x: 0, backgroundColor: '#D32F2F', duration: 0.25 });
+                gsap.to(toggleButton, { backgroundColor: '#E2E8F0', duration: 0.25 });
             }
         });
     </script>
