@@ -3,355 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riyas Moideen S | Business Analyst & Data Analytics Portfolio</title>
-    <!-- Tailwind CSS for clean layout -->
+    <title>Riyas Moideen S | Interactive Analytics Workspace</title>
+    <!-- Tailwind CSS for OS grid structuring -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP for elite motion design & scrolling effects -->
+    <!-- GSAP for OS window scaling and kinetic mouse tracking -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <style>
-        /* Premium Minimalist Light Theme Styles */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #F8F9FA; /* Premium Studio White */
-            color: #1A1A1A; /* Crisp Onyx Black */
-            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ECEBE6; /* Classic Minimalist Studio Gray-White */
+            color: #111111;
+            font-family: 'SF Pro Text', '-apple-system', BlinkMacSystemFont, sans-serif;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* Subtle Background Texture Layer */
-        .noise-overlay {
+        /* Technical Blueprint Blueprint Matrix Grid System background */
+        .desktop-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(17, 17, 17, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(17, 17, 17, 0.03) 1px, transparent 1px);
+        }
+
+        /* Real-time Film Grain Matte Texture Layer */
+        .grain-layer {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.018;
+            opacity: 0.025;
             pointer-events: none;
             z-index: 9999;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
-        /* Custom Micro-Interaction Animated Underline */
-        .interactive-nav-link {
-            position: relative;
-        }
-        .interactive-nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-            background-color: #1A1A1A;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .interactive-nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        /* Smooth glassmorphic OS menu elements */
+        .os-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Masking effect utility for text reveals */
-        .text-mask {
-            overflow: hidden;
-            display: inline-block;
-            vertical-align: bottom;
+        /* Custom OS Window Shadow System */
+        .os-shadow {
+            box-shadow: 0 30px 70px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.2);
+        }
+
+        /* Custom scroll paths inside the system window frames */
+        .window-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .window-content::-webkit-scrollbar-thumb {
+            background: #CCCCCC;
+            border-radius: 4px;
+        }
+        .window-content::-webkit-scrollbar-thumb:hover {
+            background: #111111;
         }
     </style>
 </head>
-<body class="overflow-x-hidden selection:bg-neutral-200 selection:text-black">
+<body class="selection:bg-neutral-900 selection:text-white desktop-grid relative min-h-screen">
 
-    <!-- High-End Grain Overlay -->
-    <div class="noise-overlay"></div>
+    <!-- Film Grain Accent Layer -->
+    <div class="grain-layer"></div>
 
-    <!-- Liquid Kinetic Cursor (Disappear on mobile) -->
-    <div id="magnetic-cursor" class="fixed top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 hidden md:block"></div>
+    <!-- Micro Interaction Cursor Follower -->
+    <div id="os-cursor" class="fixed top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-50 transition-transform duration-75 ease-out -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"></div>
 
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 w-full flex justify-between items-center px-6 md:px-16 py-6 z-40 bg-[#F8F9FA]/80 backdrop-blur-md border-b border-neutral-200/50">
-        <div class="text-base font-bold tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity">
-            Riyas Moideen S
+    <!-- UPPER OS MENUBAR -->
+    <header class="fixed top-0 left-0 w-full h-8 bg-[#FAF9F6]/80 border-b border-neutral-300/60 flex justify-between items-center px-4 z-40 text-xs font-medium os-blur">
+        <div class="flex items-center space-x-4">
+            <span class="font-bold tracking-tighter hover:opacity-60 cursor-pointer">RM_OS v1.2</span>
+            <span class="text-neutral-400">|</span>
+            <span class="hidden md:inline font-mono text-neutral-500">Workspace: Business_Analytic_Matrix</span>
         </div>
-        <div class="flex space-x-6 md:space-x-10 text-xs tracking-widest uppercase text-neutral-500 font-medium">
-            <a href="#about" class="interactive-nav-link text-neutral-900 hover:text-black">About</a>
-            <a href="#skills" class="interactive-nav-link text-neutral-900 hover:text-black">Skills</a>
-            <a href="#experience" class="interactive-nav-link text-neutral-900 hover:text-black">Experience</a>
-            <a href="#projects" class="interactive-nav-link text-neutral-900 hover:text-black">Projects</a>
+        <div class="flex items-center space-x-6 font-mono text-neutral-600">
+            <span>+91 8778259311</span>
+            <span class="hidden sm:inline">sriyasmoideen@gmail.com</span>
+            <span id="os-clock">14:18:48</span>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen w-full flex flex-col justify-center px-6 md:px-16 pt-24 pb-12 relative bg-[#F8F9FA]">
-        <div class="max-w-6xl w-full mx-auto">
-            <p class="text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 mb-6 flex items-center gap-2">
-                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 
-                Business Analyst Aspirant
-            </p>
-            
-            <h1 class="text-4xl md:text-8xl font-extrabold tracking-tight leading-[0.95] uppercase mb-8 text-neutral-900">
-                <span class="text-mask"><span class="reveal-hero-text inline-block">Data-Driven</span></span><br>
-                <span class="text-mask"><span class="reveal-hero-text inline-block text-neutral-400 font-light">Insights &</span></span><br>
-                <span class="text-mask"><span class="reveal-hero-text inline-block">Visualization.</span></span>
-            </h1>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 pt-8 border-t border-neutral-200">
-                <p class="text-neutral-600 text-base md:text-lg leading-relaxed max-w-lg">
-                    Expertise in turning raw data into interactive, actionable business intelligence assets. Skilled in bridging technical analytics with business strategy.
-                </p>
-                <div class="flex flex-col justify-end space-y-2 text-xs font-mono text-neutral-500 md:text-right">
-                    <p>+91 8778259311</p>
-                    <p>sriyasmoideen@gmail.com</p>
-                    <p>Coimbatore, India</p>
-                </div>
+    <!-- FLOATING SIDEBAR VIRTUAL SYSTEM DESKTOP ICONS -->
+    <div class="absolute top-16 left-6 flex flex-col space-y-8 z-10 hidden lg:flex">
+        <div class="desktop-icon group flex flex-col items-center justify-center w-16 cursor-pointer">
+            <div class="w-10 h-10 bg-white border border-neutral-300/80 rounded flex items-center justify-center shadow-sm group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z" /></svg>
             </div>
+            <span class="text-[10px] font-mono mt-1 text-neutral-500 text-center group-hover:text-black">Core_BI.sys</span>
         </div>
-    </section>
 
-    <!-- Core Skills Matrix Section -->
-    <section id="skills" class="py-24 px-6 md:px-16 bg-white border-y border-neutral-200">
-        <div class="max-w-6xl w-full mx-auto">
-            <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-16 font-mono">[ 01 / Core Skillset ]</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
-                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
-                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Analytics & BI</h3>
-                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
-                        <li>Data Analysis</li>
-                        <li>Data Visualization</li>
-                        <li>Business Intelligence</li>
-                        <li>Data Modeling</li>
-                    </ul>
-                </div>
-                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
-                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Databases & Tools</h3>
-                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
-                        <li>SQL (DDL, DML)</li>
-                        <li>Power BI</li>
-                        <li>Advanced Excel</li>
-                    </ul>
-                </div>
-                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
-                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Development</h3>
-                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
-                        <li>Python (NumPy, Pandas)</li>
-                        <li>Matplotlib</li>
-                        <li>JavaScript & APIs</li>
-                    </ul>
-                </div>
-                <div class="skill-group p-4 border-l-2 border-neutral-200 hover:border-black transition-colors">
-                    <h3 class="font-bold uppercase tracking-wider text-sm mb-4">Methodology</h3>
-                    <ul class="text-neutral-600 text-sm space-y-2 font-mono">
-                        <li>Statistical Analysis</li>
-                        <li>SPSS Software</li>
-                        <li>Data Cleaning</li>
-                        <li>Data Transformation</li>
-                    </ul>
-                </div>
+        <div class="desktop-icon group flex flex-col items-center justify-center w-16 cursor-pointer">
+            <div class="w-10 h-10 bg-white border border-neutral-300/80 rounded flex items-center justify-center shadow-sm group-hover:bg-neutral-900 group-hover:text-white transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 8.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.75ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.75Z" /></svg>
             </div>
+            <span class="text-[10px] font-mono mt-1 text-neutral-500 text-center group-hover:text-black">Projects.dmg</span>
         </div>
-    </section>
+    </div>
 
-    <!-- Experience Timeline Section -->
-    <section id="experience" class="py-24 px-6 md:px-16 bg-[#F8F9FA]">
-        <div class="max-w-6xl w-full mx-auto">
-            <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-16 font-mono">[ 02 / Professional Experience ]</h2>
+    <!-- MAIN MOVING CENTRAL COMPUTER TERMINAL WINDOW -->
+    <main class="w-full min-h-screen pt-20 pb-20 flex items-center justify-center px-4 md:px-12">
+        
+        <div id="desktop-window" class="w-full max-w-5xl bg-[#FAF9F6] border border-neutral-300 rounded-xl os-shadow flex flex-col overflow-hidden relative opacity-0">
             
-            <div class="space-y-12">
-                <!-- Role 1 -->
-                <div class="experience-row grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-neutral-200 hover:bg-neutral-100/50 transition-colors p-4 rounded">
-                    <div class="text-xs font-mono text-neutral-500 uppercase">Recent</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-neutral-900">AI Intern</h3>
-                        <p class="text-sm font-mono text-neutral-500">Phoenix Softech</p>
-                    </div>
-                    <ul class="text-sm text-neutral-600 space-y-2 list-disc list-inside md:list-outside">
-                        <li>Performed data analysis using Python libraries including NumPy and Pandas.</li>
-                        <li>Created clean visualizations using Matplotlib to identify trends.</li>
-                        <li>Applied targeted data cleaning & preprocessing techniques to improve underlying quality.</li>
-                    </ul>
+            <!-- Window Top Chrome/Bar Controls -->
+            <div class="h-11 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between px-4 select-none">
+                <!-- Mac/PC Styled Window Button Node Elements -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-neutral-300 rounded-full hover:bg-red-400 transition-colors cursor-pointer"></div>
+                    <div class="w-3 h-3 bg-neutral-300 rounded-full hover:bg-yellow-400 transition-colors cursor-pointer"></div>
+                    <div class="w-3 h-3 bg-neutral-300 rounded-full hover:bg-green-400 transition-colors cursor-pointer"></div>
                 </div>
-
-                <!-- Role 2 -->
-                <div class="experience-row grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-neutral-200 hover:bg-neutral-100/50 transition-colors p-4 rounded">
-                    <div class="text-xs font-mono text-neutral-500 uppercase">Auditing</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-neutral-900">Stock Auditing Intern</h3>
-                        <p class="text-sm font-mono text-neutral-500">L&T (Larsen & Toubro)</p>
-                    </div>
-                    <ul class="text-sm text-neutral-600 space-y-2 list-disc list-inside md:list-outside">
-                        <li>Conducted physical and systemic inventory audits ensuring strict operational standards.</li>
-                        <li>Verified historical stock data accuracy and built structured components for audit reporting.</li>
-                    </ul>
+                <!-- Path address directory text bar tracking -->
+                <div class="bg-white border border-neutral-200/80 rounded-md text-[11px] font-mono px-12 py-1 text-neutral-400 shadow-inner max-w-sm truncate hidden sm:block">
+                    usr/riyasmoideen/portfolio_2026.bin
                 </div>
+                <div class="w-14"></div>
             </div>
-        </div>
-    </section>
 
-    <!-- Capital Interactive Showcase Section -->
-    <section id="projects" class="py-24 px-6 md:px-16 bg-white">
-        <div class="max-w-6xl w-full mx-auto">
-            <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-16 font-mono">[ 03 / Selected Deliverables ]</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Project Card 1 -->
-                <div class="project-card group cursor-pointer border border-neutral-200 p-8 rounded-lg bg-[#F8F9FA] hover:bg-black hover:text-white transition-all duration-500 ease-out">
-                    <div class="flex justify-between items-start mb-12">
-                        <span class="text-xs font-mono px-3 py-1 border border-neutral-300 group-hover:border-neutral-700 rounded-full transition-colors">Power BI / Excel</span>
-                        <span class="text-xs font-mono text-neutral-400">Jul — Aug 2025</span>
-                    </div>
-                    <h3 class="text-2xl font-bold tracking-tight mb-4">College Infrastructure & Finance Analytics Dashboard</h3>
-                    <p class="text-neutral-500 group-hover:text-neutral-300 text-sm mb-6 leading-relaxed">
-                        Developed high-level interactive production dashboards mapping institutional infrastructure metrics directly against operational cost margins. Streamlined structural visual systems to maximize stakeholder reporting efficiency.
+            <!-- CORE FRAME WINDOW INTERACTIVE SCROLLING REGION -->
+            <div class="window-content overflow-y-auto max-h-[72vh] bg-[#FAF9F6] p-6 md:p-12">
+                
+                <!-- GIANT BOLD COMPONENT NAME REVEAL -->
+                <div class="border-b border-neutral-200 pb-12 mb-12">
+                    <p class="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 mb-2">// Business Intelligence & Data Systems</p>
+                    <!-- Giant responsive typographic identity structure -->
+                    <h1 class="text-[8vw] md:text-[6.5vw] font-black tracking-tighter leading-[0.85] text-neutral-900 uppercase">
+                        RIYAS<br><span class="text-neutral-300">MOIDEEN S</span>
+                    </h1>
+                    <p class="mt-6 text-neutral-600 font-light text-base md:text-lg max-w-2xl leading-relaxed">
+                        Formulating clean execution blueprints by synthesizing raw multi-layered metrics into actionable strategic operations. Specialize in custom-built Power BI structures and Python predictive workflows.
                     </p>
-                    <div class="text-xs font-mono underline opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        View Matrix Breakdown →
+                </div>
+
+                <!-- 01 / LIVE MATRIX CAPABILITIES SPECTRUM -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="text-xs font-mono uppercase tracking-wider text-neutral-400">[ 01 / Analytics Matrix ]</span>
+                        <div class="h-[1px] bg-neutral-200 flex-grow ml-4"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="border border-neutral-200 p-6 rounded-lg bg-white/50 hover:border-black transition-colors">
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-2">Architectures</h3>
+                            <p class="text-xs text-neutral-500 font-mono leading-relaxed">Power BI • Advanced Analytics Structures • SQL (Data Manipulation/Definition Systems) • Modern Dashboard Blueprinting</p>
+                        </div>
+                        <div class="border border-neutral-200 p-6 rounded-lg bg-white/50 hover:border-black transition-colors">
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-2">Programming Engine</h3>
+                            <p class="text-xs text-neutral-500 font-mono leading-relaxed">Python Environment • Pandas Computing • NumPy Numerical Matrices • Matplotlib Visual Plot Engine</p>
+                        </div>
+                        <div class="border border-neutral-200 p-6 rounded-lg bg-white/50 hover:border-black transition-colors">
+                            <h3 class="text-sm font-bold uppercase tracking-wider mb-2">Methodologies</h3>
+                            <p class="text-xs text-neutral-500 font-mono leading-relaxed">SPSS Statistical Processing • Comprehensive Preprocessing Modules • Empirical Enterprise Field Research</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project Card 2 -->
-                <div class="project-card group cursor-pointer border border-neutral-200 p-8 rounded-lg bg-[#F8F9FA] hover:bg-black hover:text-white transition-all duration-500 ease-out">
-                    <div class="flex justify-between items-start mb-12">
-                        <span class="text-xs font-mono px-3 py-1 border border-neutral-300 group-hover:border-neutral-700 rounded-full transition-colors">Research / SPSS</span>
-                        <span class="text-xs font-mono text-neutral-400">Publication</span>
+                <!-- 02 / SELECTED SYSTEM PRODUCTION DELIVERABLES -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="text-xs font-mono uppercase tracking-wider text-neutral-400">[ 02 / Core Deliverables ]</span>
+                        <div class="h-[1px] bg-neutral-200 flex-grow ml-4"></div>
                     </div>
-                    <h3 class="text-2xl font-bold tracking-tight mb-4">User Perception Towards E-Wallet Services</h3>
-                    <p class="text-neutral-500 group-hover:text-neutral-300 text-sm mb-6 leading-relaxed">
-                        Conducted statistical empirical survey research focused on tracking consumer behavior and digital transaction adoption models. Leveraged deep quantitative computational insight reporting using specialized statistical packages.
-                    </p>
-                    <div class="text-xs font-mono underline opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Read Analytics Paper →
+                    
+                    <div class="space-y-4">
+                        <!-- Project Asset 1 -->
+                        <div class="group border border-neutral-200 p-6 rounded-xl bg-white hover:bg-neutral-900 hover:text-white transition-all duration-500 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <span class="text-[10px] font-mono text-neutral-400 group-hover:text-neutral-500 block mb-1">DATA VISUALIZATION / POWER BI</span>
+                                <h4 class="text-lg font-bold tracking-tight">Institutional Infrastructure & Finance Analytics Ecosystem</h4>
+                            </div>
+                            <span class="text-xs font-mono border border-neutral-200 group-hover:border-neutral-800 px-3 py-1 rounded-full whitespace-nowrap">Load System Frame →</span>
+                        </div>
+
+                        <!-- Project Asset 2 -->
+                        <div class="group border border-neutral-200 p-6 rounded-xl bg-white hover:bg-neutral-900 hover:text-white transition-all duration-500 cursor-pointer flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <span class="text-[10px] font-mono text-neutral-400 group-hover:text-neutral-500 block mb-1">STATISTICAL MODELLING / SPSS</span>
+                                <h4 class="text-lg font-bold tracking-tight">User Perception Metrics Strategy Towards E-Wallet Portals</h4>
+                            </div>
+                            <span class="text-xs font-mono border border-neutral-200 group-hover:border-neutral-800 px-3 py-1 rounded-full whitespace-nowrap">Load System Frame →</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Education & Certifications -->
-    <section class="py-24 px-6 md:px-16 bg-[#F8F9FA] border-t border-neutral-200">
-        <div class="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-            
-            <!-- Education Column -->
-            <div>
-                <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-10 font-mono">[ 04 / Credentials ]</h2>
-                <div class="space-y-8">
+                <!-- 03 / FOOTPRINT LOG FILE TIMELINE -->
+                <div class="mb-12">
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="text-xs font-mono uppercase tracking-wider text-neutral-400">[ 03 / Functional Experience Logs ]</span>
+                        <div class="h-[1px] bg-neutral-200 flex-grow ml-4"></div>
+                    </div>
+                    
+                    <div class="border border-neutral-200 rounded-lg overflow-hidden bg-white/40">
+                        <div class="grid grid-cols-3 bg-neutral-100 p-3 text-[10px] font-mono text-neutral-400 border-b border-neutral-200">
+                            <div>TIMESTAMP</div>
+                            <div>SYSTEM ENTITY ROLE</div>
+                            <div>OPERATIONAL OBJECTIVE</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 p-4 text-xs font-mono border-b border-neutral-100 items-center gap-2">
+                            <div class="text-neutral-400">2025 — ACTIVE</div>
+                            <div class="font-bold">AI Intern @ Phoenix Softech</div>
+                            <div class="text-neutral-500">Configuring automated data transformation matrix logic sequences using Pandas frameworks.</div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 p-4 text-xs font-mono items-center gap-2">
+                            <div class="text-neutral-400">AUDIT MARGINS</div>
+                            <div class="font-bold">Stock Auditing Intern @ L&T</div>
+                            <div class="text-neutral-500">Managed complex physical architecture asset reporting matrices under industrial control baselines.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 / SYSTEM CREDENTIAL REGISTERS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-neutral-200 pt-8 text-xs font-mono text-neutral-500">
                     <div>
-                        <span class="text-xs font-mono text-neutral-400">2024 - 2026</span>
-                        <h3 class="text-lg font-bold text-neutral-900">MBA — Business Analytics & Marketing</h3>
-                        <p class="text-sm text-neutral-600">KV Institute of Management and Information Studies, Coimbatore (Anna University)</p>
+                        <span class="block font-bold text-neutral-900 mb-2">// Academic Registry</span>
+                        <p class="mb-1 text-neutral-700 font-sans font-bold">MBA in Business Analytics & Marketing (2024 - 2026)</p>
+                        <p class="text-[11px] mb-3">KV Institute of Management & Info Studies (Anna University)</p>
+                        <p class="text-neutral-700 font-sans font-bold">Bachelor of Commerce (2021 - 2024)</p>
+                        <p class="text-[11px]">Madurai Kamaraj University — 55% Aggregate</p>
                     </div>
-                    <div class="pt-4 border-t border-neutral-200">
-                        <span class="text-xs font-mono text-neutral-400">2021 - 2024</span>
-                        <h3 class="text-lg font-bold text-neutral-900">Bachelor of Commerce (B.Com)</h3>
-                        <p class="text-sm text-neutral-600">Madurai Kamaraj University — 55%</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Certifications Column -->
-            <div>
-                <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-400 mb-10 font-mono">[ 05 / Certifications ]</h2>
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center py-3 border-b border-neutral-200">
-                        <span class="text-sm font-medium text-neutral-800">CPBFI Certified Program (Banking, Finance, Insurance)</span>
-                        <span class="text-xs font-mono text-neutral-400">Bajaj Finserv</span>
-                    </div>
-                    <div class="flex justify-between items-center py-3 border-b border-neutral-200">
-                        <span class="text-sm font-medium text-neutral-800">Advanced Power BI Strategy Workshop</span>
-                        <span class="text-xs font-mono text-neutral-400">Apr 2025</span>
+                    <div>
+                        <span class="block font-bold text-neutral-900 mb-2">// Authorized Accreditations</span>
+                        <p class="text-neutral-700 font-sans mb-1">CPBFI Program Qualification • Bajaj Finserv Partner Track</p>
+                        <p class="text-neutral-700 font-sans">Enterprise Advanced Power BI Engineering Workshop Blueprint</p>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
-
-    <!-- Footer Dynamic Section -->
-    <footer class="py-12 px-6 md:px-16 bg-white text-center text-xs font-mono text-neutral-400 tracking-wider">
-        <div class="max-w-6xl w-full mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2026 Riyas Moideen S. All Rights Reserved.</p>
-            <div class="flex space-x-6">
-                <a href="mailto:sriyasmoideen@gmail.com" class="hover:text-black transition-colors">[ Email ]</a>
-                <a href="#" class="hover:text-black transition-colors">[ LinkedIn Profile ]</a>
             </div>
         </div>
-    </footer>
+    </main>
 
-    <!-- High Level Graphics Engine (GSAP Scripting Logic) -->
+    <!-- LIVE CONSOLE CONTROLS ENGINE SCRIPTS -->
     <script>
-        // Ensure GSAP plugins are initialized
+        // System Clock Tick Script Function
+        function updateClock() {
+            const timeDisplay = document.getElementById('os-clock');
+            const current = new Date();
+            timeDisplay.textContent = current.toTimeString().split(' ')[0];
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Initialize Cinematic Engine Motions
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. Fluid Custom Interactive Liquid Cursor Logic
-        const cursor = document.getElementById('magnetic-cursor');
-        
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.08,
+        // Fluid Tracking Engine Pointer for Virtual OS desktop space
+        const cursorNode = document.getElementById('os-cursor');
+        document.addEventListener('mousemove', (event) => {
+            gsap.to(cursorNode, {
+                x: event.clientX,
+                y: event.clientY,
+                duration: 0.05,
                 ease: "power1.out"
             });
         });
 
-        // Trigger dynamic scaling changes on hover states over interactive links
-        document.querySelectorAll('a, .project-card, .skill-group').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                gsap.to(cursor, { scale: 3.5, backgroundColor: '#ffffff' });
+        // OS Window Cinematic Stagger Entrance Execution Loading Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.to("#desktop-window", {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.2,
+                startAt: { y: 60, scale: 0.96 },
+                ease: "power4.out"
             });
-            element.addEventListener('mouseleave', () => {
-                gsap.to(cursor, { scale: 1, backgroundColor: '#000000' });
+        });
+
+        // Kinetic Desktop Window Parallax Shift Matrix on mouse travel
+        const interactiveWindow = document.getElementById('desktop-window');
+        document.addEventListener('mousemove', (e) => {
+            const coordinateX = (e.clientX - window.innerWidth / 2) * 0.012;
+            const coordinateY = (e.clientY - window.innerHeight / 2) * 0.012;
+            
+            gsap.to(interactiveWindow, {
+                rotateY: coordinateX,
+                rotateX: -coordinateY,
+                transformPerspective: 1200,
+                duration: 0.6,
+                ease: "power2.out"
             });
-        });
-
-        // 2. Cinematic Typography Masked Scroll Entrance on Hero Loader
-        gsap.from(".reveal-hero-text", {
-            y: "100%",
-            duration: 1.4,
-            stagger: 0.15,
-            ease: "power4.out"
-        });
-
-        // 3. Staggered Entrance Animations for Rows and Cards via ScrollTrigger
-        gsap.from(".skill-group", {
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%",
-                toggleActions: "play none none reverse"
-            },
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out"
-        });
-
-        gsap.from(".experience-row", {
-            scrollTrigger: {
-                trigger: "#experience",
-                start: "top 85%",
-                toggleActions: "play none none reverse"
-            },
-            x: -30,
-            opacity: 0,
-            duration: 0.9,
-            stagger: 0.15,
-            ease: "power2.out"
-        });
-
-        gsap.from(".project-card", {
-            scrollTrigger: {
-                trigger: "#projects",
-                start: "top 75%",
-                toggleActions: "play none none reverse"
-            },
-            y: 60,
-            opacity: 0,
-            duration: 1.1,
-            stagger: 0.2,
-            ease: "power4.out"
         });
     </script>
 </body>
